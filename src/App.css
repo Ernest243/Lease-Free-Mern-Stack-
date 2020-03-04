@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+ins{
+  text-decoration: none;
+}
+
+.myLink:hover{
+    text-decoration: underline;
+  }
+
+  .myLink{
+    text-align: left;
+    margin-left: -18px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+  }
+
+  .myLabel{
+    text-align: left;
+  }
+
