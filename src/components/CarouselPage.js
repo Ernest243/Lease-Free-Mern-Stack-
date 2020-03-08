@@ -9,28 +9,28 @@ const CarouselPage = () =>{
             <Carousel.Item>
                 <img 
                     className="d-block w-100 h-50"
-                    src={require('/Users/tonytegs/Documents/Software/lease-free/src/img/img_1.jpg')}
+                    src={require('../img/img_1.jpg')}
                     alt="House"
                 />
             </Carousel.Item>
             <Carousel.Item>
                 <img 
                     className="d-block w-100"
-                    src={require('/Users/tonytegs/Documents/Software/lease-free/src/img/img_2.jpg')}
+                    src={require('../img/img_2.jpg')}
                     alt="House"
                 />
             </Carousel.Item>
             <Carousel.Item>
                 <img 
                     className="d-block w-100"
-                    src={require('/Users/tonytegs/Documents/Software/lease-free/src/img/img_3.jpg')}
+                    src={require('../img/img_3.jpg')}
                     alt="House"
                 />
             </Carousel.Item>
             <Carousel.Item>
                 <img 
                     className="d-block w-100"
-                    src={require('/Users/tonytegs/Documents/Software/lease-free/src/img/img_4.jpg')}
+                    src={require('../img/img_4.jpg')}
                     alt="House"
                 />
             </Carousel.Item>
