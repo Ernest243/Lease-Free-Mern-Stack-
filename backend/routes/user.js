@@ -1,27 +1,36 @@
 const router = require('express').Router();
-const passport = require('passport');
-var User = require('../models/user');
+let User = require('../models/user.model');
 
-router.route('/').post((req, res) =>{
-        var newUser = new User({
-        username: req.body.username,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        streetAddress: req.body.streetAddress,
-        city: req.body.city,
-        state: req.body.state,
-        zipCode: req.body.zipCode,
-        role: req.body.role
-    });
-    User.register(new User({username: req.body.username}), 
-                req.body.password, function(err, user){
-        if(err){
-            //Place error redirect!
-            console.log(error);
-
-        }
-        passport.authenticate("local")(req, res, function(){
-            //Place logged in redirect here!
-        });
-    });
+router.route('/').get((req, res) => {
+    User.find()
+     .then(users => res.json(users))
+     .catch(err => res.status(400).json('Error: ' + err));
 });
+
+router.route('/signUp').post((req, res) => {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const phoneNumber = req.body.phoneNumber;
+    const email = req.body.email;
+    const address = req.body.address;
+    const city = req.body.city;
+    const state = req.body.state;
+    const zipCode = req.body.zipCode;
+
+    const newUser = new User({
+        firstName, 
+        lastName, 
+        phoneNumber, 
+        email, 
+        address, 
+        city, 
+        state, 
+        zipCode,
+    });
+
+    newUser.save()
+      .then( () => res.json('User added!'))
+      .catch(err => res.status(400).json('Error: ' + err));
+});
+
+module.exports = router;
