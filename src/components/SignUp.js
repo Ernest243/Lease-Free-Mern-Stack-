@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -34,6 +33,8 @@ class SignUp extends Component{
             zipCodeUser: '', 
         }
     }
+
+   
 
     onChangeFirstName(e){
         this.setState({
@@ -87,27 +88,23 @@ class SignUp extends Component{
 
         e.preventDefault();
 
-        const user = {
+        const userPOST = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             phoneNumber: this.state.phoneNumber,
-            emailAddress: this.state.emailAddrss,
-            addressUser: this.state.addressUser,
-            cityUser: this.state.cityUser,
-            stateUser: this.state.stateUser,
-            zipCodeUser: this.state.zipCodeUser
-        }
+            email: this.state.emailAddress,
+            address: this.state.addressUser,
+            city: this.state.cityUser,
+            state: this.state.stateUser,
+            zipCode: this.state.zipCodeUser
+        };
 
-        console.log(user);
+        console.log(userPOST);
 
-        axios.post('http://localhost:5000/user/signUp', user)
+        axios.post('http://localhost:5001/user/signUp', userPOST)
           .then(res => console.log(res.data));
 
-          window.location = '/';
-
     }
-
-  
 
     render() 
     {
