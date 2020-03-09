@@ -8,7 +8,7 @@ const InfoDetails = () => {
             <Row>
                 <Col>
                     <Card className="text-center" style={{ width: '18rem' }}  >
-                        <Card.Img  variant="top" src="http://www.simpleimageresizer.com/_uploads/photos/1a9f5dfa/hands_286x180.jpg"/>
+                        <Card.Img  variant="top" src={require('../img/hands.jpg')}/>
                         <Card.Body>
                             <Card.Title>Best Deals</Card.Title>
                             <Card.Text>Lease Free has the always the best deals in the market for over 20 years. For more details,
@@ -20,7 +20,7 @@ const InfoDetails = () => {
                 </Col>
                 <Col>
                 <Card className="text-center" style={{ width: '18rem' }} >
-                        <Card.Img  variant="top" src="http://www.simpleimageresizer.com/_uploads/photos/1a9f5dfa/VLUREM_286x180.jpg"/>
+                        <Card.Img  variant="top" src={require('../img/VLUREM.jpg')}/>
                         <Card.Body>
                         <Card.Title>On-site maintenance</Card.Title>
                             <Card.Text>
@@ -32,7 +32,7 @@ const InfoDetails = () => {
                 </Col>
                 <Col>
                 <Card className="text-center" style={{ width: '18rem' }}>
-                        <Card.Img  variant="top" src="http://www.simpleimageresizer.com/_uploads/photos/1a9f5dfa/img_1_copy_286x180.jpg"/>  
+                        <Card.Img  variant="top" src={require('../img/img_3.jpg')}/>  
                         <Card.Body>
                         <Card.Title>Luxury Home</Card.Title>
                             <Card.Text>

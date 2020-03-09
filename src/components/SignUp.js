@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 class SignUp extends Component{
@@ -11,6 +12,16 @@ class SignUp extends Component{
     constructor(props) 
     {
         super(props);
+
+        this.onChangeFirstName = this.onChangeFirstName.bind(this);
+        this.onChangelastName = this.onChangelastName.bind(this);
+        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
+        this.onChangeEmailAddress = this.onChangeEmailAddress.bind(this);
+        this.onChangeAddressUser = this.onChangeAddressUser.bind(this);
+        this.onChangeCityUser = this.onChangeCityUser.bind(this);
+        this.onChangeStateUser = this.onChangeStateUser.bind(this);
+        this.onChangeZipCodeUser = this.onChangeZipCodeUser.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             firstName: '',
@@ -22,16 +33,6 @@ class SignUp extends Component{
             stateUser: '', 
             zipCodeUser: '', 
         }
-
-        this.onChangeFirstName = this.onChangeFirstName.bind(this);
-        this.onChangelastName = this.onChangelastName.bind(this);
-        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
-        this.onChangeEmailAddress = this.onChangeEmailAddress.bind(this);
-        this.onChangeAddressUser = this.onChangeAddressUser.bind(this);
-        this.onChangeCityUser = this.onChangeCityUser.bind(this);
-        this.onChangeStateUser = this.onChangeStateUser.bind(this);
-        this.onChangeZipCodeUser = this.onChangeZipCodeUser.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChangeFirstName(e){
@@ -86,38 +87,23 @@ class SignUp extends Component{
 
         e.preventDefault();
 
-        console.log(`Form Submitted: `);
-        console.log(`First Name: ${this.state.firstName}`)
-        console.log(`Last Name: ${this.state.lastName}`)
-        console.log(`Phone Number: ${this.state.phoneNumber}`)
-        console.log(`Email Address: ${this.state.emailAddress}`)
-        console.log(`Address: ${this.state.addressUser}`)
-        console.log(`City: ${this.state.cityUser}`)
-        console.log(`State: ${this.state.stateUser}`)
-        console.log(`Zip code: ${this.state.zipCodeUser}`)
+        const user = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phoneNumber: this.state.phoneNumber,
+            emailAddress: this.state.emailAddrss,
+            addressUser: this.state.addressUser,
+            cityUser: this.state.cityUser,
+            stateUser: this.state.stateUser,
+            zipCodeUser: this.state.zipCodeUser
+        }
 
+        console.log(user);
 
-        this.setState = (
-            {
-                firstName: '',
-                lastName: '',
-                phoneNumber: '',
-                emailAddress: '',
-                addressUser: '',
-                cityUser: '', 
-                stateUser: 'Choose...', 
-                zipCodeUser: ''
-        })
+        axios.post('http://localhost:5000/user/signUp', user)
+          .then(res => console.log(res.data));
 
-        console.log(`Form Submitted: `);
-        console.log(`First Name: ${this.state.firstName}`)
-        console.log(`Last Name: ${this.state.lastName}`)
-        console.log(`Phone Number: ${this.state.phoneNumber}`)
-        console.log(`Email Address: ${this.state.emailAddress}`)
-        console.log(`Address: ${this.state.addressUser}`)
-        console.log(`City: ${this.state.cityUser}`)
-        console.log(`State: ${this.state.stateUser}`)
-        console.log(`Zip code: ${this.state.zipCodeUser}`)
+          window.location = '/';
 
     }
 
