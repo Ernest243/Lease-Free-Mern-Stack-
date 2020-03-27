@@ -16,6 +16,8 @@ router.route('/signUp').post((req, res) => {
     const city = req.body.city;
     const state = req.body.state;
     const zipCode = req.body.zipCode;
+    const password1 = req.body.password1;
+    const password2 = req.body.password2;
 
     const newUser = new User({
         firstName, 
@@ -26,6 +28,9 @@ router.route('/signUp').post((req, res) => {
         city, 
         state, 
         zipCode,
+        password1,
+        password2,
+
     });
 
     newUser.save()

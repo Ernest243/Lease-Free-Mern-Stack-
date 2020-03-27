@@ -20,6 +20,8 @@ class SignUp extends Component{
         this.onChangeCityUser = this.onChangeCityUser.bind(this);
         this.onChangeStateUser = this.onChangeStateUser.bind(this);
         this.onChangeZipCodeUser = this.onChangeZipCodeUser.bind(this);
+        this.onChangePasswordUser = this.onChangePasswordUser.bind(this);
+        this.onChangePasswordUser2 = this.onChangePasswordUser2.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -31,57 +33,51 @@ class SignUp extends Component{
             cityUser: '', 
             stateUser: '', 
             zipCodeUser: '', 
+            passwordU1: '',
+            passwordU2: ''
         }
     }
 
    
 
     onChangeFirstName(e){
-        this.setState({
-            firstName: e.target.value
-        });
+        this.setState({ firstName: e.target.value });
     }
 
     onChangelastName(e){
-        this.setState({
-            lastName: e.target.value
-        });
+        this.setState({ lastName: e.target.value });
     }
 
     onChangePhoneNumber(e){
-        this.setState({
-            phoneNumber: e.target.value
-        });
+        this.setState({ phoneNumber: e.target.value });
     }
 
     onChangeEmailAddress(e){
-        this.setState({
-            emailAddress: e.target.value
-        });
+        this.setState({ emailAddress: e.target.value });
     }
 
     onChangeAddressUser(e){
-        this.setState({
-            addressUser: e.target.value
-        });
+        this.setState({ addressUser: e.target.value });
     }
 
     onChangeCityUser(e){
-        this.setState({
-            cityUser: e.target.value
-        });
+        this.setState({ cityUser: e.target.value });
     }
 
     onChangeStateUser(e){
-        this.setState({
-            stateUser: e.target.value
-        });
+        this.setState({ stateUser: e.target.value });
     }
 
     onChangeZipCodeUser(e){
-        this.setState({
-            zipCodeUser: e.target.value
-        });
+        this.setState({ zipCodeUser: e.target.value });
+    }
+
+    onChangePasswordUser(e){
+        this.setState({ passwordU1: e.target.value });
+    }
+
+    onChangePasswordUser2(e){
+        this.setState({ passwordU2: e.target.value });
     }
 
     onSubmit(e) {
@@ -96,13 +92,15 @@ class SignUp extends Component{
             address: this.state.addressUser,
             city: this.state.cityUser,
             state: this.state.stateUser,
-            zipCode: this.state.zipCodeUser
+            zipCode: this.state.zipCodeUser,
+            passwordU1: this.state.passwordU1,
+            passwordU2: this.state.passwordU2
         };
 
         console.log(userPOST);
 
         axios.post('http://localhost:5001/user/signUp', userPOST)
-          .then(res => console.log(res.data));
+             .then(res => console.log(res.data));
 
     }
 
@@ -115,7 +113,7 @@ class SignUp extends Component{
                     <div className="form-row">
                         <div className="form-goup col-md-4">
                             <label>First Name</label>
-                            <input type="text" className="form-control" placeholder="First Name"
+                            <input type="text" className="form-control" required placeholder="First Name"
                                 value={this.state.firstName} 
                                 onChange={this.onChangeFirstName}
                                 />
@@ -220,7 +218,26 @@ class SignUp extends Component{
                                 onChange={this.onChangeZipCodeUser}
                             />
                         </div>
-                    </div><br />
+                    </div>
+                    <br />
+                    <div className="form-row">
+                        <div className="form-goup col-md-6">
+                        <label>Password</label>
+                            <input type="password" className="form-control" placeholder="Enter your password"
+                                value={this.state.passwordU1} 
+                                onChange={this.onChangePasswordUser}
+                                />
+                        </div>
+                        <div className="form-goup col-md-6">
+                        <label>Confrim password</label>
+                            <input type="password" className="form-control" placeholder="Confirm your password"
+                                value={this.state.passwordU2} 
+                                onChange={this.onChangePasswordUser2}
+                                />
+                        </div>
+                      
+                    </div>
+                    <br />
                         <div className="form-group">
                             <button type="submit" className="btn btn-primary">Sign up</button>
                         </div>

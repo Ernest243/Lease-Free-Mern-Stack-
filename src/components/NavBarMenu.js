@@ -17,7 +17,8 @@ const NavBarMenu = () => {
                     <Nav.Link href="#link">CONTACT US</Nav.Link>
                 </Nav>
                 <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange="onChange()"/>
+                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit" style={{marginRight: 15}} onSubmit="onSubmitSearch()">Submit</button>
                     <Link to="/residentPortal"><Button variant="outline-info">RESIDENT PORTAL</Button></Link>
                 </Form>
             </Navbar.Collapse>
@@ -25,4 +26,4 @@ const NavBarMenu = () => {
     )
 }
 
-export default NavBarMenu
+export default NavBarMenu;

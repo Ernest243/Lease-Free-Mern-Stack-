@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class LogIn extends Component 
 {
 
-    constructor(props)
+     constructor(props)
     {
         super(props);
 
@@ -47,7 +47,9 @@ class LogIn extends Component
                 </Form>
             </Container>
         )
-    }
+    }  
+
+
 }
 
-export default LogIn
+export default LogIn;
