@@ -5,6 +5,7 @@ import CarouselPage from './components/CarouselPage';
 import InfoDetails from './components/InfoDetails';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
+import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -31,8 +32,8 @@ const Home = () => (
   <div>
     <CarouselPage />
     <br /> <br />
-    <InfoDetails />
-    <br /> <br />
+    <InfoDetails /><br /><br />
+    <Footer />
 </div>
 )
 
