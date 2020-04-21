@@ -36,8 +36,8 @@ const Foot = () => {
                     <div className="ft-main-item">
                         <h2 className="ft-title">Stay Updated</h2>
                         <p>Subscribe to our newsletter to get our latest news.</p>
-                        <form>
-                            <input type="email" name="email" placeholder="Enter email address" />
+                        <form className="special">
+                            <input type="email" name="email" placeholder="Enter email address" className="in_in" />
                             <input type="submit" value="Subscribe"/>
                         </form>
                     </div>

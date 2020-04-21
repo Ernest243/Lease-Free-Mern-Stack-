@@ -1,9 +1,5 @@
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+
 
 ul {
     list-style: none;
@@ -32,15 +28,8 @@ a:hover {
     padding-bottom: 0.625rem;
 }
 
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
 
-.container {
-    flex: 1;
-}
+
 
 .ft-main {
     padding: 1.25rem 1.875rem;
@@ -65,12 +54,12 @@ body {
     }
 }
 
-form {
+.special {
     display: flex;
     flex-wrap: wrap;
 }
 
-input[type="email"] {
+.in_in[type="email"] {
     border: 0;
     padding: 0.625rem;
     margin-top: 0.3215rem;
