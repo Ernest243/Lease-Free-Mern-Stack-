@@ -1,5 +1,9 @@
 const router = require('express').Router();
-let User = require('../models/user.model');
+const User = require('../models/user.model');
+const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("../../config/keys");
 
 router.route('/').get((req, res) => {
     User.find()
@@ -29,9 +33,15 @@ router.route('/signUp').post((req, res) => {
         state, 
         zipCode,
         password1,
-        password2,
-
     });
+
+    bcrypt.genSalt(10, (err, salt)=>{
+        bcrypt.hash(newUser.password1, salt, (err, hash)=>{
+            if(err) throw err;
+            newUser.password1 = hash;
+        })
+    })
+    
 
     newUser.save()
       .then( () => res.json('User added!'))
