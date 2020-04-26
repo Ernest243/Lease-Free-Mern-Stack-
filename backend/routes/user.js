@@ -3,7 +3,6 @@ const User = require('../models/user.model');
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
 
 router.route('/').get((req, res) => {
     User.find()
@@ -12,40 +11,28 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/signUp').post((req, res) => {
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const phoneNumber = req.body.phoneNumber;
-    const email = req.body.email;
-    const address = req.body.address;
-    const city = req.body.city;
-    const state = req.body.state;
-    const zipCode = req.body.zipCode;
-    const password1 = req.body.password1;
-    const password2 = req.body.password2;
 
     const newUser = new User({
-        firstName, 
-        lastName, 
-        phoneNumber, 
-        email, 
-        address, 
-        city, 
-        state, 
-        zipCode,
-        password1,
+        firstName: req.body.firstName, 
+        lastName: req.body.lastName, 
+        phoneNumber: req.body.phoneNumber, 
+        email: req.body.email, 
+        address: req.body.address, 
+        city: req.body.city, 
+        state: req.body.state, 
+        zipCode: req.body.zipCode,
+        password1: req.body.passwordU1,
     });
 
-    bcrypt.genSalt(10, (err, salt)=>{
-        bcrypt.hash(newUser.password1, salt, (err, hash)=>{
-            if(err) throw err;
-            newUser.password1 = hash;
-        })
-    })
-    
-
-    newUser.save()
-      .then( () => res.json('User added!'))
-      .catch(err => res.status(400).json('Error: ' + err));
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password1, salt, (err, hash) => {
+          newUser.password1 = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
+        });
+      });
 });
 
 module.exports = router;

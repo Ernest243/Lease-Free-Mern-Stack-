@@ -101,7 +101,7 @@ class SignUp extends Component{
 
         axios.post('http://localhost:5001/user/signUp', userPOST)
              .then(res => console.log(res.data));
-
+        
     }
 
     render() 
