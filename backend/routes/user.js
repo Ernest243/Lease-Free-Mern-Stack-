@@ -3,6 +3,7 @@ const User = require('../models/user.model');
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const keys = require('../config/keys');
 
 router.route('/').get((req, res) => {
     User.find()
@@ -33,6 +34,38 @@ router.route('/signUp').post((req, res) => {
             .catch(err => console.log(err));
         });
       });
+});
+
+router.post('/login').post((req, res) =>{
+    const email = req.body.email;
+    const password = req.body.password;
+
+    User.findOne({email}).then(user =>{
+        if(!user){
+            return res.status(404).json({emailnotfound: "Email not found"});
+        }
+
+        bcrypt.compare(password, user.password).then(isMatch =>{
+            if(isMatch){
+                const payload = {
+                    id : user.id,
+                    name : user.firstName
+                };
+
+                jwt.sign(
+                    payload,
+                    keys.secretOrKey,
+                    {expiresIn: 60*60*1000*2},
+                    (err,token)=>{
+                        res.json({success: true, token: "Bearer "+ token})
+                    }
+                );
+            }
+            else{
+                return res.status(400).json({passwordincorrect: "Password Incorrect"});
+            }
+        });
+    });
 });
 
 module.exports = router;
