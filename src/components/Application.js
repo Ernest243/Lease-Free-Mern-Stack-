@@ -10,7 +10,26 @@ class Application extends Component {
 
         super();
 
-       
+        this.onChangeCurrentDay = this.onChangeCurrentDay.bind(this);
+        this.onChangeExpDate = this.onChangeExpDate.bind(this);
+        this.onChangePropAddress = this.onChangePropAddress.bind(this);
+        this.onChangeMonthRent = this.onChangeMonthRent.bind(this);
+        this.onChangeSecDepot = this.onChangeSecDepot.bind(this);
+        this.onChangeFirst = this.onChangeFirst.bind(this);
+        this.onChangeMidInit = this.onChangeMidInit.bind(this);
+        this.onChangeLast = this.onChangeLast.bind(this);
+        this.onChangeNumber = this.onChangeNumber.bind(this);
+        this.onChangeDOB = this.onChangeDOB.bind(this);
+        this.onChangeSSN = this.onChangeSSN.bind(this);
+        this.onChangeDL = this.onChangeDL.bind(this);
+        this.onChangeMonthInc = this.onChangeMonthInc.bind(this);
+        this.onChangePosition = this.onChangePosition.bind(this);
+        this.onChangeCoFirst = this.onChangeCoFirst.bind(this);
+        this.onChangeCoLast = this.onChangeCoLast.bind(this);
+        this.onChangeCoPos = this.onChangeCoPos.bind(this);
+        this.onChangeCoMonthInc = this.onChangeCoMonthInc.bind(this);
+        this.onChangeCoNumber = this.onChangeCoNumber.bind(this);
+        this.onChangeCoEmail = this.onChangeCoEmail.bind(this);
 
         this.state = {
             // Fields concerning the property
@@ -39,6 +58,91 @@ class Application extends Component {
             coPhoneNumber: '',
             coEmail: ''
         }
+    }
+
+    onChangeCurrentDay(e) {
+        this.setState({ currentDay: e.target.value });
+    }
+
+    onChangeExpDate(e) {
+        this.setState({ expectedMoveInDate: e.target.value });
+    }
+
+    onChangePropAddress(e) {
+        this.setState({ propertyAddress: e.target.value });
+    }
+
+    onChangeMonthRent(e) {
+        this.setState({ monthlyRent: e.target.value });
+    }
+
+    onChangeSecDepot(e) {
+        this.setState({ securityDeposit: e.target.value });
+    }
+
+    onChangeFirst(e) {
+        this.setState({ applicantFirst: e.target.value });
+    }
+
+    onChangeMidInit(e) {
+        this.setState({ applicantMidInitial: e.target.value });
+    }
+
+    onChangePropLast(e) {
+        this.setState({ applicantLast: e.target.value });
+    }
+
+    onChangeNumber(e) {
+        this.setState({ applicantNumber: e.target.value });
+    }
+
+    onChangeDOB(e) {
+        this.setState({ applicantDOB: e.target.value });
+    }
+
+    onChangeSSN(e) {
+        this.setState({ applicantSSN: e.target.value });
+    }
+
+    onChangeDL(e) {
+        this.setState({ applicantDL: e.target.value });
+    }
+
+    onChangeMonthInc(e) {
+        this.setState({ applicantMonthlyInc: e.target.value });
+    }
+
+    onChangePosition(e) {
+        this.setState({ applicantPosition: e.target.value });
+    }
+
+    onChangeCoFirst(e) {
+        this.setState({ coFirst: e.target.value });
+    }
+
+    onChangeCoLast(e) {
+        this.setState({ coLast: e.target.value });
+    }
+
+    onChangeCoPos(e) {
+        this.setState({ coPosition: e.target.value });
+    }
+
+    onChangeCoMonthInc(e) {
+        this.setState({ coMonthlyInc: e.target.value });
+    }
+
+    onChangeCoNumber(e) {
+        this.setState({ coPhoneNumber: e.target.value });
+    }
+
+    onChangeCoEmail(e) {
+        this.setState({ coEmail: e.target.value });
+    }
+
+    onSubmit(e) {
+      e.preventDefault();
+      
     }
 
     render() {
