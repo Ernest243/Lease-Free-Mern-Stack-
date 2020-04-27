@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Button, Container, Nav } from 'react-bootstrap';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class LogIn extends Component 
 {
@@ -10,42 +10,73 @@ class LogIn extends Component
     {
         super(props);
 
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+
         this.state = {
             emailAddress: " ",
-            passwordUser: " ",
+            passwordUser: " "
         }
     }
+
+    onChangeEmail(e) {
+        
+        this.setState({ emailAddress: e.target.value });
+    }
+
+    onChangePassword(e) {
+
+        this.setState({ passwordUser: e.target.value });
+    }
+  
+    onSubmit(e) {
+
+        e.preventDefault();
+
+        const userLogs = {
+
+            email: this.state.emailAddress,
+            password: this.state.passwordUser
+        };
+
+
+        axios.post('http://localhost:5001/user/login', userLogs)
+            .then(res => console.log(res.data));
+
+    }
+ 
 
     render() 
     {
         return (
 
-            <Container >
-                <br /><br /><br /><br /><br /><br /><br />
-                <Form style={{width: '50%'}}>
-                    <Form.Group controlId="formBasicEmail" className="myLabel"> 
-                        <Form.Label >Email address</Form.Label>
-                        <Form.Control  type="email" placeholder="Enter your email"/>
-                        <Form.Text className="text-muted">
-                            
-                        </Form.Text>
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicPassword" className="myLabel">
-                        <Form.Label >Password</Form.Label>
-                        <Form.Control  type="password" placeholder="Password"/>
-                    </Form.Group>
-
-                    <Form.Group className="myLabel">
-                        <Link to="/signUp"><Nav.Link href="#link" className="myLink"><ins>Don't have an account? Sign up!</ins></Nav.Link></Link>
-                        <Button variant="primary" type="submit">
-                            Log in
-                        </Button>
-                    </Form.Group>
-                    
-                  
-                </Form>
-            </Container>
+           <div className="container" style={{marginTop: '200px'}}>
+               <form className="myLabel" onSubmit={this.onSubmit}>
+                   <div className="form-row">
+                       <div className="form-group col-md-6">
+                           <label>Email address</label>
+                           <input type="email" className="form-control" placeholder="Email address" required 
+                           value={this.state.emailAddress}
+                           onChange={this.onChangeEmail}/>
+                       </div>
+                   </div>
+                   <div className="form-row">
+                       <div className="form-group col-md-6">
+                           <label>Password</label>
+                           <input type="password" className="form-control" required placeholder="Password" 
+                           value={this.state.passwordUser}
+                           onChange={this.onChangePassword}/>
+                       </div>
+                   </div>
+                   <div className="form-group">
+                       <button type="submit" className="btn btn-primary">Log in</button>
+                   </div>
+                   <div className="form-group">
+                       <Link to="/signUp" href="#link" className="myLink"><ins>Don't have an account? Sign up.</ins></Link>
+                   </div>
+               </form>
+           </div>
         )
     }  
 

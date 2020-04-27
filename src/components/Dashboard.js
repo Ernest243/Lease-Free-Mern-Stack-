@@ -35,7 +35,7 @@ const Dashboard = () => {
                         <Card.Body>
                             <Card.Title>We are here for you</Card.Title>
                             <Card.Text>
-                                Fill in less than aminute and we will get back you in less than 3 hours.
+                                Fill in less than a minute and we will get back you in less than 3 hours.
                             </Card.Text>
                             <Button variant="primary">Fill report</Button>
                         </Card.Body>
