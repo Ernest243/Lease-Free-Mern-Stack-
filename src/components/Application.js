@@ -209,7 +209,7 @@ class Application extends Component {
                     </div>
                     <div className="form-goup col-md-3">
                     <label>Middle initial</label>
-                        <input type="text" className="form-control" maxlength="1" placeholder="Middle initial"
+                        <input type="text" className="form-control" maxLength="1" placeholder="Middle initial"
                             value={this.state.applicantMidInitial} 
                             onChange={this.onChangeMidInit}
                             />
